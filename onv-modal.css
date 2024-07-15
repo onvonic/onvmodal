@@ -1,0 +1,147 @@
+.onv-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.onv-modal-wrapper {
+    margin: 1.75rem auto;
+    max-width: 600px;
+}
+
+.onv-modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+}
+
+.onv-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.onv-close:hover,
+.onv-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.onv-modal-header {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.onv-modal-body {
+    padding: 15px;
+}
+
+.onv-modal-footer {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    text-align: right;
+}
+
+/* modal centered */
+.onv-modal-centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* modal responsif  */
+@media screen and (max-width: 625px) {
+    .onv-modal-wrapper {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .onv-modal-xl {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .onv-modal-lg {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .onv-modal-sm {
+        width: 90%;
+    }
+}
+
+/* modal size */
+/* Large Extra Modal */
+.onv-modal-xl {
+    max-width: 1140px;
+}
+
+/* Large Modal */
+.onv-modal-lg {
+    max-width: 800px;
+}
+
+/* Small Modal */
+.onv-modal-sm {
+    max-width: 300px;
+}
+
+/* Fullscreen Modal */
+.onv-modal-fs {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.onv-modal-fs .onv-modal-header {
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    z-index: 1;
+}
+
+.onv-modal-fs .onv-modal-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.onv-modal-fs .onv-modal-body {
+    overflow-y: auto;
+}
+
+.onv-modal-fs .onv-modal-footer {
+    position: sticky;
+    bottom: 0;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    text-align: right;
+    z-index: 1;
+}

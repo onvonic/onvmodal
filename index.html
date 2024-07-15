@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Tanpa Framework</title>
+    <link rel="stylesheet" href="onv-modal.css">
+</head>
+
+<body>
+    <!-- START MODAL DEFAULT -->
+    <button type="button" data-onv-toggle="modal" data-onv-target="#onvModal">Buka Modal Default</button>
+    <div id="onvModal" class="onv-modal">
+        <div class="onv-modal-wrapper">
+            <div class="onv-modal-content">
+                <div class="onv-modal-header">
+                    <span class="onv-modal-title">Modal Title </span>
+                    <button type="button" data-onv-dismiss="modal">&times;</button>
+                </div>
+                <div class="onv-modal-body">
+                    <h3>MODAL DEFAULT</h3>
+                    <p>Ini adalah konten dari modal.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="onv-modal-footer">
+                    <button type="button">Submit</button>
+                    <button type="button" data-onv-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL DEFAULT -->
+    <!-- START MODAL EXTRA LARGE -->
+    <button type="button" data-onv-toggle="modal" data-onv-target="#onvModalXl">Buka Modal Extra Large</button>
+    <div id="onvModalXl" class="onv-modal">
+        <div class="onv-modal-wrapper onv-modal-xl onv-modal-centered">
+            <div class="onv-modal-content">
+                <div class="onv-modal-header">
+                    <span class="onv-modal-title">Modal Title</span>
+                    <button type="button" data-onv-dismiss="modal">&times;</button>
+                </div>
+                <div class="onv-modal-body">
+                    <h3>EXTRA LARGE</h3>
+                    <p>Ini adalah konten dari modal.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="onv-modal-footer">
+                    <button type="button">Submit</button>
+                    <button type="button" data-onv-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL EXTRA LARGE -->
+    <!-- START MODAL LARGE -->
+    <button type="button" data-onv-toggle="modal" data-onv-target="#onvModalLg">Buka Modal Large</button>
+    <div id="onvModalLg" class="onv-modal">
+        <div class="onv-modal-wrapper onv-modal-lg">
+            <div class="onv-modal-content">
+                <div class="onv-modal-header">
+                    <span class="onv-modal-title">Modal Title</span>
+                    <button type="button" data-onv-dismiss="modal">&times;</button>
+                </div>
+                <div class="onv-modal-body">
+                    <h3>LARGE</h3>
+                    <p>Ini adalah konten dari modal.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="onv-modal-footer">
+                    <button type="button">Submit</button>
+                    <button type="button" data-onv-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL LARGE -->
+
+    <!-- START MODAL SMALL -->
+    <button type="button" data-onv-toggle="modal" data-onv-target="#onvModalSm">Buka Modal Small</button>
+    <div id="onvModalSm" class="onv-modal">
+        <div class="onv-modal-wrapper onv-modal-sm">
+            <div class="onv-modal-content">
+                <div class="onv-modal-header">
+                    <span class="onv-modal-title">Modal Title</span>
+                    <button type="button" data-onv-dismiss="modal">&times;</button>
+                </div>
+                <div class="onv-modal-body">
+                    <h3>SMALL</h3>
+                    <p>Ini adalah konten dari modal.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="onv-modal-footer">
+                    <button type="button">Submit</button>
+                    <button type="button" data-onv-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL SMALL -->
+    <!-- START MODAL FULLSCREEN -->
+    <button type="button" data-onv-toggle="modal" data-onv-target="#onvModalFs">Buka Modal Fullscreen</button>
+    <div id="onvModalFs" class="onv-modal">
+        <div class="onv-modal-wrapper onv-modal-fs">
+            <div class="onv-modal-content">
+                <div class="onv-modal-header">
+                    <span class="onv-modal-title">Modal Title</span>
+                    <button type="button" data-onv-dismiss="modal">&times;</button>
+                </div>
+                <div class="onv-modal-body">
+                    <h3>FULLSCREEN</h3>
+                    <p>Ini adalah konten dari modal.</p>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div style="height: 2000px;"></div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="onv-modal-footer">
+                    <button type="button">Submit</button>
+                    <button type="button" data-onv-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL FULLSCREEN -->
+
+    <script src="onv-modal.js"></script>
+    <!-- Script untuk menampilkan modal secara otomatis saat halaman dibuka -->
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var modal = document.getElementById("onvModal");
+            modal.style.display = "block";
+        });
+    </script> -->
+</body>
+
+</html>
