@@ -143,7 +143,29 @@
             </div>
         </div>
     </div>
-
+    <!-- START MODAL DRAGGABLE -->
+    <!-- Tombol untuk membuka modal -->
+    <button type="button" data-onv-toggle="modal" data-onv-target="#onvModalAdd">Buka Modal draggable</button>
+    <!-- Struktur modal -->
+    <div id="onvModalAdd" class="onv-modal">
+        <div class="onv-modal-wrapper onv-modal-sm draggable">
+            <div class="onv-modal-content">
+                <div class="onv-modal-header">
+                    <span class="onv-modal-title">Modal Draggable</span>
+                    <button type="button" data-onv-dismiss="modal" class="onv-btn-close"></button>
+                </div>
+                <div class="onv-modal-body">
+                    <p>Ini adalah modal yang bisa di-drag. Klik header dan geser untuk memindahkan modal ini.</p>
+                    <p>Fitur ini ideal untuk modal kecil yang perlu dipindahkan agar tidak menutupi elemen lain di halaman.</p>
+                </div>
+                <div class="onv-modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary">Submit</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-onv-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL DRAGGABLE -->
     <!-- Sertakan file JavaScript ONV Modal -->
     <script src="assets/onv-modal.js"></script>
     <!-- Buka Modal Kustom -->
