@@ -195,5 +195,39 @@ body.modal-open {
 .onv-btn-close-white {
     filter: invert(1) grayscale(100%) brightness(200%)
 }
+/* CSS untuk Modal Draggable */
 
+/* Tambahkan style untuk modal draggable */
+.onv-modal-wrapper.draggable {
+    position: absolute;
+    /* Margin diatur via JavaScript saat dragging dimulai */
+    z-index: 9990;
+}
+
+.onv-modal-wrapper.draggable .onv-modal-header {
+    cursor: move; /* Menampilkan cursor grab saat hover di header */
+    user-select: none; /* Mencegah pemilihan teks saat drag */
+}
+
+.onv-modal-wrapper.draggable .onv-modal-header.dragging {
+    cursor: grabbing; /* Menampilkan cursor grabbing saat sedang drag */
+}
+
+/* Tambahkan style untuk .onv-modal-sm agar lebih baik untuk dragging */
+.onv-modal-sm {
+    max-width: 300px;
+    min-width: 250px;
+}
+
+/* Untuk memastikan header modal terlihat lebih jelas sebagai handle */
+.onv-modal-wrapper.draggable .onv-modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Style khusus untuk modal yang sedang di-drag */
+.onv-modal-wrapper.draggable[data-dragged="true"] {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s;
+}
 /* onv-modal.css end */
