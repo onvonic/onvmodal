@@ -1,3 +1,4 @@
+/* onv-modal.css start */
 .onv-modal {
     display: none;
     position: fixed;
@@ -17,6 +18,7 @@
 .onv-modal-content {
     background-color: #fefefe;
     border: 1px solid #888;
+    border-radius: 0.475rem;
 }
 
 .onv-close {
@@ -35,12 +37,13 @@
 
 
 .onv-modal-header {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 15px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px dashed #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 0.475rem 0.475rem 0
 }
 
 .onv-modal-body {
@@ -48,10 +51,11 @@
 }
 
 .onv-modal-footer {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 15px;
-    border-top: 1px solid #ccc;
+    border-top: 1px dashed #ccc;
     text-align: right;
+    border-radius: 0 0 0.475rem 0.475rem;
 }
 
 /* modal centered */
@@ -145,3 +149,40 @@
     text-align: right;
     z-index: 1;
 }
+
+.onv-btn-close {
+    box-sizing: content-box;
+    width: .75rem;
+    height: .75rem;
+    padding: .25em .25em;
+    color: #000;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/.75rem auto no-repeat;
+    border: 0;
+    border-radius: .475rem;
+    opacity: .5
+}
+
+.onv-btn-close:hover {
+    color: #000;
+    text-decoration: none;
+    opacity: .75
+}
+
+.onv-btn-close:focus {
+    outline: 0;
+    box-shadow: none;
+    opacity: 1
+}
+
+.onv-btn-close.disabled,
+.onv-btn-close:disabled {
+    pointer-events: none;
+    user-select: none;
+    opacity: .25
+}
+
+.onv-btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%)
+}
+
+/* onv-modal.css end */
