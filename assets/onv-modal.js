@@ -22,6 +22,22 @@ function showModal(modal) {
     modal.style.display = "block";
 }
 
+// Helper function to initialize modals
+function initializeModal(openBtnSelector, modalId) {
+    let openModalBtn = document.querySelector(openBtnSelector);
+    let modal = document.getElementById(modalId);
+
+    if (modal) {
+        // No need to call setupModalClose as we have the global event listener below
+        
+        if (openModalBtn) {
+            openModalBtn.addEventListener("click", function() {
+                showModal(modal);
+            });
+        }
+    }
+}
+
 // Global event handler for all modals
 document.addEventListener('click', function(event) {
     // Handle close button clicks
@@ -41,36 +57,13 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Helper function to initialize modals
-function initializeModal(openBtnSelector, modalId) {
-    let openModalBtn = document.querySelector(openBtnSelector);
-    let modal = document.getElementById(modalId);
-
-    if (modal) {
-        setupModalClose(modal); // Set up close functionality for all modals
-
-        if (openModalBtn) {
-            openModalBtn.addEventListener("click", function () {
-                showModal(modal);
-            });
-        }
-    }
-}
-
-// ------------------------------------------------------------------------------
-// Initialize all modals
-// ------------------------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", function () {
+// Initialize modals when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize different modal types
     initializeModal("[data-onv-target='#onvModal']", 'onvModal');
     initializeModal("[data-onv-target='#onvModalXl']", 'onvModalXl');
     initializeModal("[data-onv-target='#onvModalLg']", 'onvModalLg');
     initializeModal("[data-onv-target='#onvModalSm']", 'onvModalSm');
     initializeModal("[data-onv-target='#onvModalFs']", 'onvModalFs');
     initializeModal("[data-onv-target='#onvModalPositionTop']", 'onvModalPositionTop');
-
-    // Automatically open the default modal
-    let defaultModal = document.getElementById("onvModal");
-    if (defaultModal) {
-        showModal(defaultModal);
-    }
 });
