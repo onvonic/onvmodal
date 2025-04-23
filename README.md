@@ -1,14 +1,16 @@
 # ONV Modal Library
 
-ONV Modal adalah library modal ringan dan dapat disesuaikan untuk aplikasi web. Library ini menyediakan cara mudah untuk membuat dan mengelola dialog modal dengan berbagai ukuran dan posisi.
+ONV Modal adalah library modal ringan dan dapat disesuaikan untuk aplikasi web. Library ini menyediakan cara mudah untuk membuat dan mengelola dialog modal dengan berbagai ukuran, posisi, dan fitur interaktif.
 
 ## Fitur
 
-- API sederhana untuk membuat dan mengelola modal
 - Beberapa ukuran modal: Default, Extra Large, Large, Small, dan Fullscreen
-- Desain responsif
+- Desain responsif yang mendukung semua perangkat
 - Styling yang dapat disesuaikan
 - Kemampuan untuk menutup modal dengan mengklik di luar atau menggunakan tombol tutup
+- **Fitur Draggable**: Memungkinkan pengguna untuk memindahkan modal dengan mouse
+- Perlindungan scroll untuk mencegah scrolling pada konten di bawah modal
+- Dukungan fullscreen yang optimal tanpa scrollbar browser
 
 ## Instalasi
 
@@ -22,7 +24,7 @@ ONV Modal adalah library modal ringan dan dapat disesuaikan untuk aplikasi web. 
 
 ## Penggunaan
 
-### Struktur HTML
+### Struktur HTML Dasar
 
 Gunakan struktur HTML berikut untuk modal Anda:
 
@@ -34,14 +36,14 @@ Gunakan struktur HTML berikut untuk modal Anda:
         <div class="onv-modal-content">
             <div class="onv-modal-header">
                 <span class="onv-modal-title">Judul Modal</span>
-                <button type="button" data-onv-dismiss="modal">&times;</button>
+                <button type="button" data-onv-dismiss="modal" class="onv-btn-close"></button>
             </div>
             <div class="onv-modal-body">
                 <!-- Konten modal di sini -->
             </div>
             <div class="onv-modal-footer">
-                <button type="button">Submit</button>
-                <button type="button" data-onv-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-sm btn-primary">Submit</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-onv-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -52,11 +54,11 @@ Gunakan struktur HTML berikut untuk modal Anda:
 
 Untuk menggunakan ukuran modal yang berbeda, tambahkan kelas yang sesuai ke `onv-modal-wrapper`:
 
-- Default: Tidak perlu kelas tambahan
-- Extra Large: `onv-modal-xl`
-- Large: `onv-modal-lg`
-- Small: `onv-modal-sm`
-- Fullscreen: `onv-modal-fs`
+- **Default**: Tidak perlu kelas tambahan
+- **Extra Large**: `onv-modal-xl`
+- **Large**: `onv-modal-lg`
+- **Small**: `onv-modal-sm`
+- **Fullscreen**: `onv-modal-fs`
 
 Contoh:
 
@@ -76,49 +78,76 @@ Untuk memusatkan modal secara vertikal dan horizontal, tambahkan kelas `onv-moda
 </div>
 ```
 
-### Inisialisasi JavaScript
+### Modal Draggable
 
-Modal-modal berikut diinisialisasi secara otomatis dalam file `onv-modal.js`:
-
-- onvModal
-- onvModalXl
-- onvModalLg
-- onvModalSm
-- onvModalFs
-- onvModalPositionTop
-
-Jika Anda perlu menginisialisasi modal secara manual (misalnya, jika Anda menambahkan modal baru ke halaman secara dinamis), Anda dapat menggunakan fungsi `initializeModal`:
-
-```javascript
-<!-- Buka Modal Kustom -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var modal = document.getElementById("onvModal");
-        modal.style.display = "block";
-    });
-</script>
-```
-
-Ganti `'#modalId'` dengan selector untuk tombol buka modal Anda, dan `'modalId'` dengan ID modal Anda.
-
-### Membuka Modal Secara Otomatis
-
-Jika Anda ingin modal terbuka secara otomatis saat halaman dimuat, Anda dapat menambahkan script berikut ke HTML Anda:
+Untuk membuat modal yang bisa dipindahkan dengan mouse, tambahkan kelas `draggable` ke `onv-modal-wrapper`:
 
 ```html
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var modal = document.getElementById("yourModalId");
-        modal.style.display = "block";
-    });
-</script>
+<div class="onv-modal-wrapper onv-modal-sm draggable">
+    <!-- Konten modal -->
+</div>
 ```
 
-Ganti `"yourModalId"` dengan ID modal yang ingin Anda buka secara otomatis.
+Catatan untuk modal draggable:
+- Fitur ini bekerja paling baik pada modal kecil dan sedang
+- Header modal digunakan sebagai "handle" untuk menggeser modal
+- Modal draggable tidak akan keluar sepenuhnya dari viewport
+- Tidak disarankan untuk digunakan dengan modal fullscreen
+
+### Tombol Close
+
+Library ini menyediakan tombol close yang sudah distyle dengan ikon X yang elegan:
+
+```html
+<button type="button" data-onv-dismiss="modal" class="onv-btn-close"></button>
+```
+
+Untuk tombol close dengan warna putih (untuk header gelap), tambahkan kelas `onv-btn-close-white`:
+
+```html
+<button type="button" data-onv-dismiss="modal" class="onv-btn-close onv-btn-close-white"></button>
+```
+
+### Inisialisasi JavaScript
+
+Modal akan diinisialisasi secara otomatis untuk elemen dengan atribut `data-onv-target`. Library secara dinamis menemukan semua tombol modal dan mengaitkannya dengan modal target yang sesuai.
+
+Jika Anda perlu menginisialisasi modal secara manual, Anda dapat menggunakan fungsi `showModal`:
+
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById("yourModalId");
+    showModal(modal);
+});
+```
+
+### Menutup Modal
+
+Modal dapat ditutup dengan:
+1. Mengklik tombol dengan atribut `data-onv-dismiss="modal"`
+2. Mengklik di luar area modal
+3. Memanggil fungsi `closeModal(modalElement)` dari JavaScript
+
+## Fitur Fullscreen
+
+Modal fullscreen dirancang untuk mengisi seluruh viewport tanpa menimbulkan scrollbar browser. 
+Hanya konten di dalam `.onv-modal-body` yang akan dapat di-scroll.
+
+```html
+<div class="onv-modal-wrapper onv-modal-fs">
+    <!-- Konten modal fullscreen -->
+</div>
+```
 
 ## Kustomisasi
 
-Anda dapat menyesuaikan tampilan modal dengan memodifikasi file `onv-modal.css`. File ini mencakup komentar untuk membantu Anda mengidentifikasi berbagai bagian untuk styling.
+Anda dapat menyesuaikan tampilan modal dengan memodifikasi file `onv-modal.css`. 
+Beberapa area umum untuk kustomisasi:
+
+- Warna header dan footer
+- Border style dan radius
+- Shadow dan efek visual
+- Transparansi background overlay
 
 ## Browser yang Didukung
 
@@ -129,14 +158,24 @@ ONV Modal mendukung semua browser modern, termasuk:
 - Safari
 - Edge
 
-## Lisensi
+## Best Practices
 
-[Sertakan informasi lisensi yang Anda pilih di sini]
+1. Gunakan modal ukuran yang sesuai dengan konten Anda
+2. Untuk modal dengan konten panjang, gunakan modal fullscreen
+3. Untuk dialog singkat atau konfirmasi, gunakan modal small
+4. Gunakan fitur draggable hanya untuk modal kecil dan sedang yang mungkin perlu dipindahkan
+5. Pastikan tombol close dan submit memiliki label yang jelas dan aksesibel
 
-## Kontribusi
+## Troubleshooting
 
-[Sertakan informasi tentang bagaimana orang lain dapat berkontribusi pada proyek Anda, jika berlaku]
+**Modal tidak terbuka:**
+- Pastikan ID modal cocok dengan atribut `data-onv-target` pada tombol
+- Periksa apakah file CSS dan JS sudah disertakan dengan benar
 
-## Dukungan
+**Modal fullscreen memiliki scrollbar:**
+- Pastikan elemen wrapper memiliki class `onv-modal-fs`
+- Periksa apakah ada elemen dengan lebar tetap yang melebihi viewport
 
-[Berikan informasi tentang cara pengguna dapat mendapatkan dukungan atau melaporkan masalah]
+**Modal draggable tidak berfungsi:**
+- Pastikan class `draggable` ditambahkan ke elemen `.onv-modal-wrapper`
+- Periksa apakah header modal ada dan dapat diklik
